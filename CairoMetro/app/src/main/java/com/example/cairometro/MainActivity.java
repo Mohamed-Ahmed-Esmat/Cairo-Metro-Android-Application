@@ -654,7 +654,7 @@ public class MainActivity extends AppCompatActivity implements TextToSpeech.OnIn
 
             return distance1 + distance2 + distance3;
         }
-        else if(line_start.equals("Line "+line2)){
+        else if(line_start.equals("Line "+line2)){//test
             int distance1 = distance_between(start, trans_2, destination_line);
             int distance2 = distance_between(trans_2, trans_1, interm_line);
             int distance3 = distance_between(trans_1, end, starting_line);
