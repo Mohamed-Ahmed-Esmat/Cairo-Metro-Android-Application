@@ -1,0 +1,67 @@
+<resources>
+    <string name="app_name">Cairo Metro</string>
+    <!-- to toggle the open close button of the navigation drawer -->
+    <string name="nav_open">Open</string>
+    <string name="nav_close">Close</string>
+    <string name="title_activity_settings">Settings</string>
+
+    <!-- Preference Titles -->
+    <string name="messages_header">Messages</string>
+    <string name="sync_header">Sync</string>
+
+    <!-- Messages Preferences -->
+    <string name="signature_title">Your signature</string>
+    <string name="reply_title">Default reply action</string>
+
+    <!-- Sync Preferences -->
+    <string name="sync_title">Sync email periodically</string>
+    <string name="attachment_title">Download incoming attachments</string>
+    <string name="attachment_summary_on">Automatically download attachments for incoming emails
+    </string>
+    <string name="attachment_summary_off">Only download attachments when manually requested</string>
+    <string name="select_the_starting_station">Select the starting station:</string>
+    <string name="select_the_destination_station">Select the destination station:</string>
+    <string name="select_station">Select station</string>
+    <string name="submit">Submit</string>
+    <string name="n_stations">n stations</string>
+    <string name="nn_minutes">nn minutes</string>
+    <string name="nn_pounds">nn pounds</string>
+    <string name="home">Home</string>
+    <string name="plan_your_trip">Plan Your Trip</string>
+    <string name="settings">Settings</string>
+    <string name="shake_mode">Shake Mode</string>
+    <string name="comfort_mode">Comfort Mode</string>
+    <string name="language">Language</string>
+    <string name="when_enabled_it_clears_the_data_by_shaking_the_phone">When enabled, it clears the data by shaking the phone</string>
+    <string name="provides_information_based_on_less_transitions_nbetween_lines">Provides information based on less transitions\nbetween lines</string>
+    <string name="enter_target_location">Enter target location</string>
+    <string name="generate">Generate</string>
+    <string name="five_pounds">5 pounds</string>
+    <string name="seven_pounds">7 pounds</string>
+    <string name="ten_pounds">10 pounds</string>
+    <string name="path_in_line">"Path in Line "</string>
+    <string name="transmit_from">"Transmit from "</string>
+    <string name="here_is_path_in_line">", here is path in Line "</string>
+    <string name="direction">"Direction "</string>
+    <string name="go_to">"Go to "</string>
+    <string name="station_to_transmit_to_line">" station, to transmit to Line "</string>
+    <string name="then_go_from">"Then go from "</string>
+    <string name="to">" to "</string>
+    <string name="here_s_you_route_in_line">"Here's you route in Line "</string>
+    <string name="stations">" stations"</string>
+    <string name="minutes">" minutes"</string>
+    <string name="to_view_the_alternative_routes_click_view">To view the alternative routes, click View</string>
+    <string name="well_you_chose_the_same_stations">Well, you chose the same stations =)</string>
+    <string name="attaba">attaba</string>
+    <string name="nasser">nasser</string>
+    <string name="sadat">sadat</string>
+    <string name="al_shohadaa">al-shohadaa</string>
+    <string name="adly_mansour">Adly Mansour</string>
+    <string name="kit_kat">Kit Kat</string>
+    <string name="helwan">Helwan</string>
+    <string name="el_marg">El-Marg</string>
+    <string name="el_mounib">El-Mounib</string>
+    <string name="shobra_el_kheima">Shobra El-Kheima</string>
+    <string name="here_s_the_nearest_station_you_could_go_to">"Here's the nearest station you could go to: "</string>
+    <string name="search">Search...</string>
+</resources>
