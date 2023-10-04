@@ -1,9 +1,6 @@
 package com.example.cairometro;
-
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -14,11 +11,8 @@ public class SettingsActivity extends AppCompatActivity {
     Switch shakeSwitch;
     Switch comfortSwitch;
     Spinner languageSpinner;
-    boolean shakeState, lastShake;
-    boolean comfortState, lastComfort;
-    String langChose="English", lastLang, transitLang;
-    String [] languages= {"Arabic", "English"};
-    SharedPreferences pref;
+    SettingsManager settingsManager;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,49 +20,48 @@ public class SettingsActivity extends AppCompatActivity {
         shakeSwitch = findViewById(R.id.shakeSwitch);
         comfortSwitch = findViewById(R.id.comfortSwitch);
         languageSpinner = findViewById(R.id.languageSpinner);
-        pref = getPreferences(MODE_PRIVATE);
-        lastShake = pref.getBoolean("shakeState", false);
-        lastComfort = pref.getBoolean("comfortState", false);
-        lastLang = pref.getString("langChosen", "");
 
-        shakeSwitch.setChecked(lastShake);
-        comfortSwitch.setChecked(lastComfort);
+        settingsManager = new SettingsManager(this);
 
-        if(languages[0].equals(lastLang))
-            languageSpinner.setSelection(0);
-        else{
-            transitLang = languages[0];
-            languages[0]=lastLang;
-            languages[1] = transitLang;
-            languageSpinner.setSelection(0);
-        }
+        shakeSwitch.setChecked(settingsManager.getShakeState());
+        comfortSwitch.setChecked(settingsManager.getComfortState());
+
+        String[] languages = {"Arabic", "English"};
+        String langChosen = settingsManager.getLangChosen();
+        int langIndex = langChosen.equals("Arabic") ? 0 : 1;
+
         ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, languages);
         languageSpinner.setAdapter(adapter);
-        System.out.println("Shake status of settings = "+shakeState);
-        System.out.println("Shake status of previous page = "+lastShake);
+        languageSpinner.setSelection(langIndex);
     }
 
     @Override
     public void onBackPressed() {
-        langChose = languageSpinner.getSelectedItem().toString();
+        boolean shakeState = shakeSwitch.isChecked();
+        boolean comfortState = comfortSwitch.isChecked();
+        String langChosen = languageSpinner.getSelectedItem().toString();
 
-        shakeState = shakeSwitch.isChecked();
-        comfortState = comfortSwitch.isChecked();
-        SharedPreferences.Editor e = pref.edit();
-        e.putBoolean("shakeState", shakeState);
-        e.putBoolean("comfortState", comfortState);
-        e.putString("langChosen", langChose);
-        e.apply();
-        Intent a = new Intent(this, MainActivity.class);
-        a.putExtra("shakeState", shakeState);
-        a.putExtra("comfortState", comfortState);
-        a.putExtra("langChosen", langChose);
-        startActivity(a);
-        super.onBackPressed();
+        settingsManager.setShakeState(shakeState);
+        settingsManager.setComfortState(comfortState);
+        settingsManager.setLangChosen(langChosen);
+
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.putExtra("shakeState", shakeState);
+        intent.putExtra("comfortState", comfortState);
+        intent.putExtra("langChosen", langChosen);
+
+        // Clear the activity stack and start the MainActivity as a new task
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+
+        startActivity(intent);
     }
 
+
+
+
+
     public void shakey(View view) {
-        System.out.println("The status is "+shakeState);
+        System.out.println("The status is ");
     }
 
     public void comfort(View view) {
